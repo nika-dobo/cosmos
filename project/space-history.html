@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Space History - Space Explorer</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/animations.css">
+    <link rel="stylesheet" href="styles/space-history.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Exo+2:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="starfield"></div>
+    <div id="audio-toggle" class="audio-control">
+        <span id="audio-icon">🔊</span>
+    </div>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <span class="logo-text">SPACE EXPLORER</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="planets.html" class="nav-link">Planets</a></li>
+                <li><a href="black-holes.html" class="nav-link">Black Holes</a></li>
+                <li><a href="galaxies.html" class="nav-link">Galaxies</a></li>
+                <li><a href="space-history.html" class="nav-link active">History</a></li>
+                <li><a href="aliens-theories.html" class="nav-link">Aliens & Theories</a></li>
+                <li><a href="quiz.html" class="nav-link">Quiz</a></li>
+                <li><a href="about.html" class="nav-link">About</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <section class="page-header">
+            <div class="container">
+                <h1 class="page-title">Space History</h1>
+                <p class="page-subtitle">Milestones in humanity's journey to the stars</p>
+            </div>
+        </section>
+
+        <section class="timeline-section">
+            <div class="timeline-container">
+                <div class="timeline-line"></div>
+                
+                <div class="timeline-item" data-year="1957">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <h3>Sputnik 1</h3>
+                        <p>The first artificial satellite launched by the Soviet Union, marking the beginning of the Space Age.</p>
+                        <div class="timeline-visual sputnik"></div>
+                    </div>
+                </div>
+
+                <div class="timeline-item" data-year="1961">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <h3>First Human in Space</h3>
+                        <p>Yuri Gagarin becomes the first human to journey into outer space aboard Vostok 1.</p>
+                        <div class="timeline-visual gagarin"></div>
+                    </div>
+                </div>
+
+                <div class="timeline-item" data-year="1969">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <h3>Moon Landing</h3>
+                        <p>Apollo 11 successfully lands on the Moon. Neil Armstrong and Buzz Aldrin become the first humans to walk on lunar surface.</p>
+                        <div class="timeline-visual moon-landing"></div>
+                    </div>
+                </div>
+
+                <div class="timeline-item" data-year="1977">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <h3>Voyager Mission</h3>
+                        <p>Voyager 1 and 2 launched to explore the outer solar system and beyond.</p>
+                        <div class="timeline-visual voyager"></div>
+                    </div>
+                </div>
+
+                <div class="timeline-item" data-year="1990">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <h3>Hubble Space Telescope</h3>
+                        <p>The Hubble Space Telescope is deployed, revolutionizing our understanding of the universe.</p>
+                        <div class="timeline-visual hubble"></div>
+                    </div>
+                </div>
+
+                <div class="timeline-item" data-year="1997">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <h3>Mars Pathfinder</h3>
+                        <p>First successful Mars rover mission, paving the way for future Mars exploration.</p>
+                        <div class="timeline-visual mars-rover"></div>
+                    </div>
+                </div>
+
+                <div class="timeline-item" data-year="2011">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <h3>End of Space Shuttle Era</h3>
+                        <p>The final Space Shuttle mission (STS-135) concludes 30 years of shuttle operations.</p>
+                        <div class="timeline-visual shuttle"></div>
+                    </div>
+                </div>
+
+                <div class="timeline-item" data-year="2020">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <h3>SpaceX Crew Dragon</h3>
+                        <p>First commercial crewed spacecraft to carry astronauts to the International Space Station.</p>
+                        <div class="timeline-visual crew-dragon"></div>
+                    </div>
+                </div>
+
+                <div class="timeline-item" data-year="2021">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <h3>James Webb Space Telescope</h3>
+                        <p>The most powerful space telescope ever built, designed to see the first galaxies that formed in the early universe.</p>
+                        <div class="timeline-visual jwst"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="achievements-section">
+            <div class="container">
+                <h2 class="section-title">Space Achievements</h2>
+                <div class="achievements-grid">
+                    <div class="achievement-card">
+                        <div class="achievement-icon">🚀</div>
+                        <h3>12</h3>
+                        <p>Humans have walked on the Moon</p>
+                    </div>
+                    <div class="achievement-card">
+                        <div class="achievement-icon">🛰️</div>
+                        <h3>5,000+</h3>
+                        <p>Satellites currently in orbit</p>
+                    </div>
+                    <div class="achievement-card">
+                        <div class="achievement-icon">🌌</div>
+                        <h3>5,000+</h3>
+                        <p>Confirmed exoplanets discovered</p>
+                    </div>
+                    <div class="achievement-card">
+                        <div class="achievement-icon">🔬</div>
+                        <h3>20+</h3>
+                        <p>Years of continuous human presence in space</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Space Explorer. Journey through the cosmos.</p>
+        </div>
+    </footer>
+
+    <script src="scripts/main.js"></script>
+    <script src="scripts/starfield.js"></script>
+    <script src="scripts/space-history.js"></script>
+</body>
+</html>

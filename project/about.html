@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - Space Explorer</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/animations.css">
+    <link rel="stylesheet" href="styles/about.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Exo+2:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="starfield"></div>
+    <div id="audio-toggle" class="audio-control">
+        <span id="audio-icon">🔊</span>
+    </div>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <span class="logo-text">SPACE EXPLORER</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="planets.html" class="nav-link">Planets</a></li>
+                <li><a href="black-holes.html" class="nav-link">Black Holes</a></li>
+                <li><a href="galaxies.html" class="nav-link">Galaxies</a></li>
+                <li><a href="space-history.html" class="nav-link">History</a></li>
+                <li><a href="aliens-theories.html" class="nav-link">Aliens & Theories</a></li>
+                <li><a href="quiz.html" class="nav-link">Quiz</a></li>
+                <li><a href="about.html" class="nav-link active">About</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <section class="page-header">
+            <div class="container">
+                <h1 class="page-title">About Space Explorer</h1>
+                <p class="page-subtitle">Inspiring cosmic curiosity through interactive exploration</p>
+            </div>
+        </section>
+
+        <section class="astronaut-section">
+            <div class="astronaut-container">
+                <div class="astronaut" id="floating-astronaut">
+                    <div class="astronaut-helmet"></div>
+                    <div class="astronaut-body"></div>
+                    <div class="astronaut-arms">
+                        <div class="arm left"></div>
+                        <div class="arm right"></div>
+                    </div>
+                    <div class="astronaut-legs">
+                        <div class="leg left"></div>
+                        <div class="leg right"></div>
+                    </div>
+                </div>
+                
+            </div>
+        </section>
+
+        <section class="about-content">
+            <div class="container">
+                <div class="content-grid">
+                    <div class="content-card">
+                        <h2>Our Mission</h2>
+                        <p>Space Explorer is dedicated to making the wonders of space accessible to everyone. Through interactive experiences, stunning visuals, and educational content, we aim to inspire the next generation of space enthusiasts and scientists.</p>
+                    </div>
+                    <div class="content-card">
+                        <h2>Our Vision</h2>
+                        <p>We envision a future where space exploration is not just for astronauts and scientists, but for everyone. By democratizing access to space knowledge, we hope to foster a global community of cosmic explorers.</p>
+                    </div>
+                    <div class="content-card">
+                        <h2>Our Values</h2>
+                        <ul>
+                            <li>Scientific accuracy and educational integrity</li>
+                            <li>Accessible and engaging content for all ages</li>
+                            <li>Inspiration through interactive experiences</li>
+                            <li>Fostering curiosity about the universe</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="team-section">
+            <div class="container">
+                <h2 class="section-title">Our Team</h2>
+                <div class="team-grid">
+                    <div class="team-member">
+                        <div class="member-avatar astronomer"></div>
+                        <h3>Dr. Sarah Chen</h3>
+                        <p>Lead Astronomer & Content Director</p>
+                        <div class="member-description">
+                            <p>PhD in Astrophysics, passionate about making space science accessible to all</p>
+                        </div>
+                    </div>
+                    <div class="team-member">
+                        <div class="member-avatar engineer"></div>
+                        <h3>Alex Rodriguez</h3>
+                        <p>Interactive Experience Designer</p>
+                        <div class="member-description">
+                            <p>Creative technologist specializing in immersive educational experiences</p>
+                        </div>
+                    </div>
+                    <div class="team-member">
+                        <div class="member-avatar educator"></div>
+                        <h3>Dr. Michael Thompson</h3>
+                        <p>Education Specialist</p>
+                        <div class="member-description">
+                            <p>Former planetarium director with 20+ years in space education</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="contact-section">
+            <div class="container">
+                <h2 class="section-title">Contact Us</h2>
+                <div class="contact-content">
+                    <div class="contact-info">
+                        <h3>Get in Touch</h3>
+                        <p>Have questions, suggestions, or want to collaborate? We'd love to hear from you!</p>
+                        <div class="contact-details">
+                            <div class="contact-item">
+                                <div class="contact-icon">📧</div>
+                                <span>hello@spaceexplorer.com</span>
+                            </div>
+                            <div class="contact-item">
+                                <div class="contact-icon">🌍</div>
+                                <span>Houston, TX (Mission Control)</span>
+                            </div>
+                            <div class="contact-item">
+                                <div class="contact-icon">📱</div>
+                                <span>Follow us on social media</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <form class="contact-form" id="contact-form">
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <select id="subject" name="subject" required>
+                                <option value="">Select a topic</option>
+                                <option value="general">General Inquiry</option>
+                                <option value="collaboration">Collaboration</option>
+                                <option value="education">Educational Partnership</option>
+                                <option value="feedback">Feedback</option>
+                                <option value="technical">Technical Support</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <section class="social-section">
+            <div class="container">
+                <h2 class="section-title">Connect With Us</h2>
+                <div class="social-links">
+                    <a href="#" class="social-link twitter" onclick="openSocial('twitter')">
+                        <div class="social-icon">🐦</div>
+                        <span>Twitter</span>
+                    </a>
+                    <a href="#" class="social-link facebook" onclick="openSocial('facebook')">
+                        <div class="social-icon">👍</div>
+                        <span>Facebook</span>
+                    </a>
+                    <a href="#" class="social-link instagram" onclick="openSocial('instagram')">
+                        <div class="social-icon">📸</div>
+                        <span>Instagram</span>
+                    </a>
+                    <a href="#" class="social-link youtube" onclick="openSocial('youtube')">
+                        <div class="social-icon">📺</div>
+                        <span>YouTube</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Space Explorer. Journey through the cosmos.</p>
+        </div>
+    </footer>
+
+    <script src="scripts/main.js"></script>
+    <script src="scripts/starfield.js"></script>
+    <script src="scripts/about.js"></script>
+</body>
+</html>
