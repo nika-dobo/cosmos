@@ -1,40 +1,52 @@
 // About page functionality
+// ამ კლასში ინახება და იმართება About გვერდის ყველა ფუნქციონალი
 class AboutPageManager {
   constructor() {
+    // ასტრონავტის ელემენტი
     this.astronaut = null;
+    // საკონტაქტო ფორმის ელემენტი
     this.contactForm = null;
+    // სოციალური ბმულების მასივი
     this.socialLinks = [];
 
+    // ყველა ფუნქციის ინიციალიზაცია
     this.init();
   }
 
   init() {
+    // ასტრონავტის ანიმაციის ჩართვა
     this.initializeAstronautAnimation();
+    // საკონტაქტო ფორმის დაყენება
     this.setupContactForm();
+    // სოციალური ბმულების ინიციალიზაცია
     this.initializeSocialLinks();
+    // გუნდის წევრების ინტერაქციების დაყენება
     this.setupTeamMemberInteractions();
+    // კონტენტის ანიმაციების ინიციალიზაცია
     this.initializeContentAnimations();
   }
 
   initializeAstronautAnimation() {
+    // ასტრონავტის DOM ელემენტის მოძებნა
     const astronaut = document.getElementById("floating-astronaut");
     if (!astronaut) return;
 
     this.astronaut = astronaut;
 
-    // Add interactive hover effect
+    // ასტრონავტზე მაუსის მიყვანისას ანიმაციის აჩქარება და ზომის გაზრდა
     astronaut.addEventListener("mouseenter", () => {
       astronaut.style.animationDuration = "3s";
       astronaut.style.transform = "scale(1.1)";
       astronaut.style.transition = "transform 0.3s ease";
     });
 
+    // მაუსის მოცილებისას ანიმაციის ნელი რეჟიმი და ზომის დაბრუნება
     astronaut.addEventListener("mouseleave", () => {
       astronaut.style.animationDuration = "6s";
       astronaut.style.transform = "scale(1)";
     });
 
-    // Add click interaction
+    // ასტრონავტზე დაკლიკებისას boost ეფექტის ჩართვა
     astronaut.addEventListener("click", () => {
       this.triggerAstronautBoost();
     });
@@ -43,18 +55,18 @@ class AboutPageManager {
   triggerAstronautBoost() {
     if (!this.astronaut) return;
 
-    // Create boost effect
+    // ასტრონავტის სწრაფი მოძრაობის ეფექტი
     this.astronaut.style.animation = "none";
     this.astronaut.style.transform = "translateY(-50px) scale(1.2)";
     this.astronaut.style.transition = "transform 0.5s ease";
 
-    // Create particle effect
+    // ნაწილაკების (particle) ეფექტის შექმნა
     this.createAstronautParticles();
 
-    // Play boost sound
+    // boost-ის ხმოვანი ეფექტი
     this.playBoostSound();
 
-    // Reset after animation
+    // 0.5 წამში ანიმაციის დაბრუნება საწყის მდგომარეობაში
     setTimeout(() => {
       this.astronaut.style.animation =
         "astronaut-float 6s ease-in-out infinite";
@@ -63,6 +75,7 @@ class AboutPageManager {
   }
 
   createAstronautParticles() {
+    // ასტრონავტის გარშემო ნაწილაკების შექმნა boost-ზე
     const container = document.querySelector(".astronaut-container");
     if (!container) return;
 
@@ -76,6 +89,7 @@ class AboutPageManager {
       particle.style.borderRadius = "50%";
       particle.style.pointerEvents = "none";
 
+      // ნაწილაკის საწყისი პოზიციის გამოთვლა ასტრონავტის მიხედვით
       const astronautRect = this.astronaut.getBoundingClientRect();
       const containerRect = container.getBoundingClientRect();
 
@@ -88,7 +102,7 @@ class AboutPageManager {
 
       container.appendChild(particle);
 
-      // Animate particle
+      // ნაწილაკის ანიმაცია სხვადასხვა მიმართულებით გაფრენის ეფექტით
       const angle = (i / 10) * Math.PI * 2;
       const distance = 50 + Math.random() * 30;
       const targetX = Math.cos(angle) * distance;
@@ -116,6 +130,7 @@ class AboutPageManager {
   }
 
   playBoostSound() {
+    // boost-ის ხმოვანი ეფექტის დაკვრა, თუ ხმა გამორთული არაა
     if (!window.audioMuted) {
       const audioContext = new (window.AudioContext ||
         window.webkitAudioContext)();
@@ -125,35 +140,40 @@ class AboutPageManager {
       oscillator.connect(gainNode);
       gainNode.connect(audioContext.destination);
 
+      // ვცვლით სიხშირეს დროში, რომ მივიღოთ "boost" ეფექტი
       oscillator.frequency.setValueAtTime(220, audioContext.currentTime);
       oscillator.frequency.exponentialRampToValueAtTime(
         880,
         audioContext.currentTime + 0.3
       );
 
+      // ვაკონტროლებთ ხმის სიმძლავრეს, რომ ნელ-ნელა ჩაქრეს
       gainNode.gain.setValueAtTime(0.1, audioContext.currentTime);
       gainNode.gain.exponentialRampToValueAtTime(
         0.01,
         audioContext.currentTime + 0.3
       );
 
+      // ვიწყებთ ხმის დაკვრას და ვაჩერებთ 0.3 წამში
       oscillator.start(audioContext.currentTime);
       oscillator.stop(audioContext.currentTime + 0.3);
     }
   }
 
   setupContactForm() {
+    // საკონტაქტო ფორმის მოძებნა და ინიციალიზაცია
     const form = document.getElementById("contact-form");
     if (!form) return;
 
     this.contactForm = form;
 
+    // ფორმის გაგზავნისას ვალიდაციის და შეტყობინების ჩვენება
     form.addEventListener("submit", (e) => {
       e.preventDefault();
       this.handleFormSubmission(form);
     });
 
-    // Add real-time validation
+    // ველების რეალურ დროში ვალიდაცია
     const inputs = form.querySelectorAll("input, select, textarea");
     inputs.forEach((input) => {
       input.addEventListener("blur", () => {
@@ -167,15 +187,17 @@ class AboutPageManager {
   }
 
   validateField(field) {
+    // ველის მნიშვნელობის შემოწმება და შეცდომის შეტყობინების ჩვენება
     const value = field.value.trim();
     let isValid = true;
     let errorMessage = "";
 
-    // Remove existing error styling
+    // წაშალე ძველი შეცდომის სტილი
     field.classList.remove("error");
 
     switch (field.type) {
       case "email":
+        // ვამოწმებთ ელფოსტის ველის სწორ ფორმატს
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if (!emailRegex.test(value)) {
           isValid = false;
@@ -183,12 +205,14 @@ class AboutPageManager {
         }
         break;
       case "text":
+        // ტექსტური ველი უნდა იყოს მინიმუმ 2 სიმბოლო
         if (value.length < 2) {
           isValid = false;
           errorMessage = "This field must be at least 2 characters long";
         }
         break;
       case "textarea":
+        // textarea ველი უნდა იყოს მინიმუმ 10 სიმბოლო
         if (value.length < 10) {
           isValid = false;
           errorMessage = "Message must be at least 10 characters long";
@@ -205,13 +229,12 @@ class AboutPageManager {
   }
 
   showFieldError(field, message) {
-    // Remove existing error message
+    // ველის ქვეშ შეცდომის შეტყობინების ჩვენება
     const existingError = field.parentNode.querySelector(".error-message");
     if (existingError) {
       existingError.remove();
     }
 
-    // Add new error message
     const errorElement = document.createElement("div");
     errorElement.className = "error-message";
     errorElement.textContent = message;
@@ -223,6 +246,7 @@ class AboutPageManager {
   }
 
   clearFieldError(field) {
+    // ველის შეცდომის სტილის და შეტყობინების წაშლა
     field.classList.remove("error");
     const errorMessage = field.parentNode.querySelector(".error-message");
     if (errorMessage) {
@@ -231,10 +255,10 @@ class AboutPageManager {
   }
 
   handleFormSubmission(form) {
+    // ფორმის გაგზავნისას ყველა ველის ვალიდაცია
     const formData = new FormData(form);
     const data = Object.fromEntries(formData);
 
-    // Validate all fields
     const inputs = form.querySelectorAll(
       "input[required], select[required], textarea[required]"
     );
@@ -251,13 +275,12 @@ class AboutPageManager {
       return;
     }
 
-    // Show loading state
+    // გაგზავნის პროცესის იმიტაცია და შეტყობინების ჩვენება
     const submitButton = form.querySelector('button[type="submit"]');
     const originalText = submitButton.textContent;
     submitButton.textContent = "Sending...";
     submitButton.disabled = true;
 
-    // Simulate form submission (replace with actual submission logic)
     setTimeout(() => {
       this.showFormMessage(
         "Thank you for your message! We'll get back to you soon.",
@@ -265,23 +288,21 @@ class AboutPageManager {
       );
       form.reset();
 
-      // Reset button
       submitButton.textContent = originalText;
       submitButton.disabled = false;
 
-      // Play success sound
+      // წარმატების ხმოვანი ეფექტი
       this.playSuccessSound();
     }, 2000);
   }
 
   showFormMessage(message, type) {
-    // Remove existing message
+    // ფორმის შეტყობინების ჩვენება (წარმატება ან შეცდომა)
     const existingMessage = this.contactForm.querySelector(".form-message");
     if (existingMessage) {
       existingMessage.remove();
     }
 
-    // Create new message
     const messageElement = document.createElement("div");
     messageElement.className = `form-message ${type}`;
     messageElement.textContent = message;
@@ -302,13 +323,13 @@ class AboutPageManager {
 
     this.contactForm.appendChild(messageElement);
 
-    // Remove message after 5 seconds
     setTimeout(() => {
       messageElement.remove();
     }, 5000);
   }
 
   playSuccessSound() {
+    // წარმატების ხმოვანი ეფექტი (ფორმის წარმატებით გაგზავნისას)
     if (!window.audioMuted) {
       const audioContext = new (window.AudioContext ||
         window.webkitAudioContext)();
@@ -318,33 +339,40 @@ class AboutPageManager {
       oscillator.connect(gainNode);
       gainNode.connect(audioContext.destination);
 
+      // რამდენიმე ნოტი, რომ წარმატების ხმა გამოვიდეს
       oscillator.frequency.setValueAtTime(523, audioContext.currentTime);
       oscillator.frequency.setValueAtTime(659, audioContext.currentTime + 0.1);
       oscillator.frequency.setValueAtTime(784, audioContext.currentTime + 0.2);
       oscillator.frequency.setValueAtTime(1047, audioContext.currentTime + 0.3);
 
+      // ვაკონტროლებთ ხმის სიმძლავრეს, რომ ნელ-ნელა ჩაქრეს
       gainNode.gain.setValueAtTime(0.1, audioContext.currentTime);
       gainNode.gain.exponentialRampToValueAtTime(
         0.01,
         audioContext.currentTime + 0.4
       );
 
+      // ვიწყებთ ხმის დაკვრას და ვაჩერებთ 0.4 წამში
       oscillator.start(audioContext.currentTime);
       oscillator.stop(audioContext.currentTime + 0.4);
     }
   }
 
   initializeSocialLinks() {
+    // სოციალური ბმულების hover ანიმაცია
     const socialLinks = document.querySelectorAll(".social-link");
 
     socialLinks.forEach((link) => {
+      // ვინახავთ ბმულს მასივში
       this.socialLinks.push(link);
 
+      // მაუსის მიყვანისას ბმული ოდნავ მაღლა და იზრდება
       link.addEventListener("mouseenter", () => {
         link.style.transform = "translateY(-10px) scale(1.05)";
         link.style.transition = "transform 0.3s ease";
       });
 
+      // მაუსის მოცილებისას ბმული უბრუნდება საწყის მდგომარეობას
       link.addEventListener("mouseleave", () => {
         link.style.transform = "translateY(0) scale(1)";
       });
@@ -352,6 +380,7 @@ class AboutPageManager {
   }
 
   setupTeamMemberInteractions() {
+    // გუნდის წევრებზე hover ეფექტები
     const teamMembers = document.querySelectorAll(".team-member");
 
     teamMembers.forEach((member) => {
@@ -359,6 +388,7 @@ class AboutPageManager {
       const description = member.querySelector(".member-description");
 
       if (avatar && description) {
+        // მაუსის მიყვანისას ავატარი იზრდება და აღწერა ჩანს
         member.addEventListener("mouseenter", () => {
           avatar.style.transform = "scale(1.1) rotate(5deg)";
           avatar.style.transition = "transform 0.3s ease";
@@ -366,6 +396,7 @@ class AboutPageManager {
           description.style.transform = "translateY(0)";
         });
 
+        // მოცილებისას უბრუნდება საწყის მდგომარეობას
         member.addEventListener("mouseleave", () => {
           avatar.style.transform = "scale(1) rotate(0deg)";
           description.style.opacity = "0.8";
@@ -376,9 +407,10 @@ class AboutPageManager {
   }
 
   initializeContentAnimations() {
-    // Animate content cards on scroll
+    // კონტენტის ბარათების ანიმაცია გვერდის გადახვევისას
     const contentCards = document.querySelectorAll(".content-card");
 
+    // IntersectionObserver-ით ვამოწმებთ, როდის გამოჩნდება ბარათი ეკრანზე
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -391,6 +423,7 @@ class AboutPageManager {
       { threshold: 0.3 }
     );
 
+    // ყველა ბარათს ვაძლევთ საწყის მდგომარეობას და ვაკვირდებით
     contentCards.forEach((card, index) => {
       card.style.opacity = "0";
       card.style.transform = "translateY(50px)";
@@ -400,7 +433,7 @@ class AboutPageManager {
       observer.observe(card);
     });
 
-    // Animate team members
+    // გუნდის წევრების ანიმაცია
     const teamMembers = document.querySelectorAll(".team-member");
     teamMembers.forEach((member, index) => {
       member.style.opacity = "0";
@@ -412,8 +445,9 @@ class AboutPageManager {
     });
   }
 
-  // Easter egg: Konami code
+  // Easter egg: კონამის კოდი
   initializeKonamiCode() {
+    // კონამის კოდის კომბინაციის შემოწმება
     const konamiCode = [
       "ArrowUp",
       "ArrowUp",
@@ -442,21 +476,21 @@ class AboutPageManager {
   }
 
   activateEasterEgg() {
-    // Create special effect
+    // საიდუმლო ეფექტის ჩართვა კონამის კოდის შეყვანისას
     const container = document.querySelector(".main-content");
     if (!container) return;
 
-    // Add rainbow effect to astronaut
+    // ასტრონავტისთვის ცისარტყელას ეფექტი
     if (this.astronaut) {
       this.astronaut.style.filter = "hue-rotate(0deg)";
       this.astronaut.style.animation =
         "astronaut-float 1s ease-in-out infinite, hue-rotate 2s linear infinite";
     }
 
-    // Create confetti effect
+    // კონფეტის ეფექტი
     this.createConfetti();
 
-    // Show easter egg message
+    // საიდუმლო შეტყობინების ჩვენება
     const message = document.createElement("div");
     message.textContent = "🚀 You found the secret space code! 🌟";
     message.style.position = "fixed";
@@ -484,6 +518,7 @@ class AboutPageManager {
   }
 
   createConfetti() {
+    // კონფეტის ნაწილაკების შექმნა საიდუმლო ეფექტისთვის
     const colors = ["#ff6b35", "#00bfff", "#00ff7f", "#8a2be2", "#ffd700"];
 
     for (let i = 0; i < 50; i++) {
@@ -521,7 +556,7 @@ class AboutPageManager {
   }
 }
 
-// Initialize about page
+// გვერდის ინიციალიზაცია მხოლოდ მაშინ, თუ ეს არის about გვერდი
 document.addEventListener("DOMContentLoaded", function () {
   if (window.spaceExplorer && window.spaceExplorer.currentPage === "about") {
     initializeAboutPage();
@@ -530,13 +565,15 @@ document.addEventListener("DOMContentLoaded", function () {
 
 let aboutPageManager;
 
+// About გვერდის ინიციალიზაციის ფუნქცია
 function initializeAboutPage() {
   aboutPageManager = new AboutPageManager();
   aboutPageManager.initializeKonamiCode();
 }
 
-// Global functions
+// გლობალური ფუნქცია სოციალური ბმულების გასახსნელად
 function openSocial(platform) {
+  // სხვადასხვა სოციალური პლატფორმის ბმულები
   const urls = {
     twitter: "https://x.com/SpaceX",
     facebook: "https://www.facebook.com/groups/spacextap?locale=ru_RU",
@@ -544,12 +581,13 @@ function openSocial(platform) {
     youtube: "https://www.youtube.com/@SpaceX",
   };
 
+  // თუ პლატფორმა არსებობს, ვხსნით ახალ ფანჯარაში
   if (urls[platform]) {
     window.open(urls[platform], "_blank");
   }
 }
 
-// Add CSS for form validation
+// ფორმის ვალიდაციისთვის საჭირო CSS სტილები
 const aboutPageStyles = `
     .form-group input.error,
     .form-group select.error,
@@ -568,12 +606,12 @@ const aboutPageStyles = `
     }
 `;
 
-// Add styles to document
+// სტილების დამატება დოკუმენტში
 const styleSheet = document.createElement("style");
 styleSheet.textContent = aboutPageStyles;
 document.head.appendChild(styleSheet);
 
-// Export functions for global use
+// გლობალური ფუნქციების ექსპორტი
 window.aboutPageExplorer = {
   openSocial,
 };
