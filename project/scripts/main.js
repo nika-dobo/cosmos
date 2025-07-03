@@ -82,7 +82,7 @@ function playSpaceAmbient() {
             oscillator.connect(gainNode);
             gainNode.connect(audioContext.destination);
             
-            oscillator.frequency.setValueAtTime(80, audioContext.currentTime);
+            oscillator.frequency.setValueAtTime(100, audioContext.currentTime);
             oscillator.type = 'sine';
             
             gainNode.gain.setValueAtTime(0, audioContext.currentTime);
