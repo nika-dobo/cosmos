@@ -226,6 +226,10 @@
   position: relative;
 }
 
+.habitable span{
+  z-index: 2;
+}
+
 .too-cold {
   right: 0;
   width: 200px;
@@ -234,6 +238,7 @@
 
 .earth-like {
   position: absolute;
+  z-index: 0;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
