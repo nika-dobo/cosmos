@@ -1,56 +1,55 @@
 // Aliens and theories page functionality
-// ამ კლასში იმართება უცხოპლანეტელების და თეორიების გვერდის ყველა ფუნქციონალი
 class AlienTheoriesExplorer {
   constructor() {
-    // ყველა UFO-ს მონაცემები
     this.ufos = [];
-    // თეორიების ბარათების მასივი
     this.theories = [];
-    // ამჟამად არჩეული თეორია
     this.currentTheory = null;
 
-    // ყველა ფუნქციის ინიციალიზაცია
     this.init();
   }
 
   init() {
-    // UFO-ების ანიმაციების ინიციალიზაცია
     this.initializeUFOAnimations();
-    // თეორიის ბარათების დაყენება
     this.setupTheoryCards();
-    // საცხოვრებელი ზონის ვიზუალიზაციის ინიციალიზაცია
     this.initializeHabitableZone();
-    // ეგზოპლანეტების ანიმაციების დაყენება
     this.setupExoplanetAnimations();
   }
 
   initializeUFOAnimations() {
-    // ვპოულობთ ყველა UFO ელემენტს
     const ufos = document.querySelectorAll(".ufo");
 
     ufos.forEach((ufo, index) => {
-      // თითოეული UFO-სთვის ვინახავთ საწყის პოზიციას და ანიმაციის პარამეტრებს
+      // Set initial positions
+      if (index === 0) {
+        ufo.style.left = "10%";
+        ufo.style.top = "20%";
+      } else if (index === 1) {
+        ufo.style.right = "15%";
+        ufo.style.top = "60%";
+        ufo.style.left = "auto";
+      }
+
       this.ufos.push({
         element: ufo,
-        baseX: parseFloat(ufo.style.left) || 0,
-        baseY: parseFloat(ufo.style.top) || 0,
+        baseX: index === 0 ? 10 : 75, // 10% for first, 75% for second (since right: 15% = left: 85%, but we want 75%)
+        baseY: index === 0 ? 20 : 60,
         phase: index * Math.PI,
         speed: 0.02 + index * 0.01,
       });
 
-      // ვიწყებთ UFO-ს ანიმაციას
+      // Start UFO animation
       this.animateUFO(ufo, index);
     });
 
-    // ვიწყებთ ყველა UFO-ს უწყვეტ მოძრაობას
+    // Start continuous UFO movement
     this.startUFOMovement();
   }
 
   animateUFO(ufo, index) {
-    // UFO-ს ვაძლევთ hover ანიმაციას
+    // Add hover animation
     ufo.style.animation = `ufo-hover 4s ease-in-out infinite ${index * 2}s`;
 
-    // UFO-ს შუქების ანიმაცია
+    // Animate lights
     const lights = ufo.querySelectorAll(".light");
     lights.forEach((light, lightIndex) => {
       light.style.animation = `ufo-lights 2s ease-in-out infinite ${
@@ -58,7 +57,7 @@ class AlienTheoriesExplorer {
       }s`;
     });
 
-    // UFO-ს სხივის ანიმაცია
+    // Animate beam
     const beam = ufo.querySelector(".ufo-beam");
     if (beam) {
       beam.style.animation = "beam-pulse 3s ease-in-out infinite";
@@ -66,18 +65,20 @@ class AlienTheoriesExplorer {
   }
 
   startUFOMovement() {
-    // ყველა UFO-ს უწყვეტი მოძრაობის ფუნქცია
     const moveUFOs = () => {
       this.ufos.forEach((ufoData, index) => {
         const time = Date.now() * 0.001;
-        // პოზიციის გამოთვლა ტალღისებურად
         const x =
-          ufoData.baseX + Math.sin(time * ufoData.speed + ufoData.phase) * 50;
+          ufoData.baseX + Math.sin(time * ufoData.speed + ufoData.phase) * 5; // Reduced movement range
         const y =
           ufoData.baseY +
-          Math.cos(time * ufoData.speed * 0.7 + ufoData.phase) * 20;
+          Math.cos(time * ufoData.speed * 0.7 + ufoData.phase) * 3; // Reduced movement range
 
-        ufoData.element.style.left = `${x}%`;
+        if (index === 0) {
+          ufoData.element.style.left = `${x}%`;
+        } else {
+          ufoData.element.style.right = `${100 - x}%`;
+        }
         ufoData.element.style.top = `${y}%`;
       });
 
@@ -88,74 +89,78 @@ class AlienTheoriesExplorer {
   }
 
   setupTheoryCards() {
-    // ვპოულობთ ყველა თეორიის ბარათს
     const theoryCards = document.querySelectorAll(".theory-card");
 
     theoryCards.forEach((card, index) => {
-      // ბარათს ვაძლევთ შემოსვლის ანიმაციას
+      // Add entrance animation
       card.style.animationDelay = `${index * 0.2}s`;
       card.classList.add("fade-in-up");
 
-      // ბარათის გადაბრუნების ინტერაქცია
-      card.addEventListener("click", () => {
+      // Setup flip interaction - remove existing onclick and add new event listener
+      card.removeAttribute("onclick");
+      card.addEventListener("click", (e) => {
+        e.preventDefault();
+        e.stopPropagation();
         this.revealTheory(card);
       });
     });
   }
 
   revealTheory(card) {
-    // თუ უკვე გადაბრუნებულია, ვაბრუნებთ უკან
+    // Close other cards first
+    document.querySelectorAll(".theory-card.flipped").forEach((otherCard) => {
+      if (otherCard !== card) {
+        otherCard.classList.remove("flipped");
+      }
+    });
+
+    // Toggle current card
     if (card.classList.contains("flipped")) {
       card.classList.remove("flipped");
     } else {
-      // სხვა გადაბრუნებული ბარათების დახურვა
-      document.querySelectorAll(".theory-card.flipped").forEach((otherCard) => {
-        if (otherCard !== card) {
-          otherCard.classList.remove("flipped");
-        }
-      });
-
       card.classList.add("flipped");
-
-      // ვუკრავთ flip-ის ხმოვან ეფექტს
+      // Add sound effect
       this.playFlipSound();
     }
   }
 
   playFlipSound() {
-    // ბარათის გადაბრუნების ხმოვანი ეფექტი
     if (!window.audioMuted) {
-      const audioContext = new (window.AudioContext ||
-        window.webkitAudioContext)();
-      const oscillator = audioContext.createOscillator();
-      const gainNode = audioContext.createGain();
+      // Create a subtle flip sound
+      try {
+        const audioContext = new (window.AudioContext ||
+          window.webkitAudioContext)();
+        const oscillator = audioContext.createOscillator();
+        const gainNode = audioContext.createGain();
 
-      oscillator.connect(gainNode);
-      gainNode.connect(audioContext.destination);
+        oscillator.connect(gainNode);
+        gainNode.connect(audioContext.destination);
 
-      oscillator.frequency.setValueAtTime(800, audioContext.currentTime);
-      oscillator.frequency.exponentialRampToValueAtTime(
-        400,
-        audioContext.currentTime + 0.1
-      );
+        oscillator.frequency.setValueAtTime(800, audioContext.currentTime);
+        oscillator.frequency.exponentialRampToValueAtTime(
+          400,
+          audioContext.currentTime + 0.1
+        );
 
-      gainNode.gain.setValueAtTime(0.1, audioContext.currentTime);
-      gainNode.gain.exponentialRampToValueAtTime(
-        0.01,
-        audioContext.currentTime + 0.1
-      );
+        gainNode.gain.setValueAtTime(0.1, audioContext.currentTime);
+        gainNode.gain.exponentialRampToValueAtTime(
+          0.01,
+          audioContext.currentTime + 0.1
+        );
 
-      oscillator.start(audioContext.currentTime);
-      oscillator.stop(audioContext.currentTime + 0.1);
+        oscillator.start(audioContext.currentTime);
+        oscillator.stop(audioContext.currentTime + 0.1);
+      } catch (error) {
+        console.log("Audio context not available");
+      }
     }
   }
 
   initializeHabitableZone() {
-    // საცხოვრებელი ზონის ვიზუალის ინიციალიზაცია
     const habitableZone = document.querySelector(".habitable-zone-visual");
     if (!habitableZone) return;
 
-    // ზონებზე hover ეფექტები
+    // Add interactive hover effects
     const zones = habitableZone.querySelectorAll(".zone");
     zones.forEach((zone) => {
       zone.addEventListener("mouseenter", () => {
@@ -170,7 +175,7 @@ class AlienTheoriesExplorer {
       });
     });
 
-    // დედამიწის მსგავსი პლანეტის დაკლიკებისას ვაჩვენებთ ინფორმაციას
+    // Animate the Earth-like planet
     const earthLike = habitableZone.querySelector(".earth-like");
     if (earthLike) {
       earthLike.addEventListener("click", () => {
@@ -180,7 +185,6 @@ class AlienTheoriesExplorer {
   }
 
   showHabitabilityInfo() {
-    // საცხოვრებელი ზონის ფაქტორების ჩვენება მოდალში
     const info = `
             <div class="habitability-info">
                 <h3>Habitable Zone Factors</h3>
@@ -200,14 +204,13 @@ class AlienTheoriesExplorer {
   }
 
   setupExoplanetAnimations() {
-    // ეგზოპლანეტების ბარათების ანიმაცია და hover ეფექტები
     const exoplanetCards = document.querySelectorAll(".exoplanet-card");
 
     exoplanetCards.forEach((card, index) => {
       card.style.animationDelay = `${index * 0.3}s`;
       card.classList.add("fade-in-up");
 
-      // hover-ზე პლანეტის ვიზუალის ანიმაცია
+      // Add hover effects
       card.addEventListener("mouseenter", () => {
         const planetVisual = card.querySelector(".planet-visual");
         if (planetVisual) {
@@ -227,8 +230,7 @@ class AlienTheoriesExplorer {
   }
 
   showInfoModal(title, content) {
-    // ინფორმაციული მოდალის ჩვენება
-    // თუ არ არსებობს, ვქმნით
+    // Create modal if it doesn't exist
     let modal = document.getElementById("info-modal");
     if (!modal) {
       modal = document.createElement("div");
@@ -254,7 +256,7 @@ class AlienTheoriesExplorer {
     }
   }
 
-  // SETI სიგნალის სიმულაცია
+  // SETI signal simulation
   simulateSETISignal() {
     const container = document.querySelector(".theories-section");
     if (!container) return;
@@ -273,7 +275,7 @@ class AlienTheoriesExplorer {
 
     container.appendChild(signal);
 
-    // სიგნალის ანიმაცია
+    // Animate signal
     signal.animate(
       [
         { opacity: 0, transform: "translateX(-100%)" },
@@ -288,39 +290,41 @@ class AlienTheoriesExplorer {
       signal.remove();
     };
 
-    // სიგნალის ხმოვანი ეფექტი
+    // Play signal sound
     this.playSignalSound();
   }
 
   playSignalSound() {
-    // SETI სიგნალის ხმოვანი ეფექტი
     if (!window.audioMuted) {
-      const audioContext = new (window.AudioContext ||
-        window.webkitAudioContext)();
-      const oscillator = audioContext.createOscillator();
-      const gainNode = audioContext.createGain();
+      try {
+        const audioContext = new (window.AudioContext ||
+          window.webkitAudioContext)();
+        const oscillator = audioContext.createOscillator();
+        const gainNode = audioContext.createGain();
 
-      oscillator.connect(gainNode);
-      gainNode.connect(audioContext.destination);
+        oscillator.connect(gainNode);
+        gainNode.connect(audioContext.destination);
 
-      oscillator.frequency.setValueAtTime(1420, audioContext.currentTime); // Hydrogen line frequency
-      oscillator.type = "sine";
+        oscillator.frequency.setValueAtTime(1420, audioContext.currentTime); // Hydrogen line frequency
+        oscillator.type = "sine";
 
-      gainNode.gain.setValueAtTime(0, audioContext.currentTime);
-      gainNode.gain.linearRampToValueAtTime(
-        0.1,
-        audioContext.currentTime + 0.1
-      );
-      gainNode.gain.linearRampToValueAtTime(0, audioContext.currentTime + 2);
+        gainNode.gain.setValueAtTime(0, audioContext.currentTime);
+        gainNode.gain.linearRampToValueAtTime(
+          0.1,
+          audioContext.currentTime + 0.1
+        );
+        gainNode.gain.linearRampToValueAtTime(0, audioContext.currentTime + 2);
 
-      oscillator.start(audioContext.currentTime);
-      oscillator.stop(audioContext.currentTime + 2);
+        oscillator.start(audioContext.currentTime);
+        oscillator.stop(audioContext.currentTime + 2);
+      } catch (error) {
+        console.log("Audio context not available");
+      }
     }
   }
 
-  // დრეიკის განტოლების კალკულატორი
+  // Drake Equation calculator
   calculateDrakeEquation(params) {
-    // პარამეტრების მიღება და შედეგის გამოთვლა
     const {
       starFormationRate = 1,
       fractionWithPlanets = 0.5,
@@ -344,7 +348,6 @@ class AlienTheoriesExplorer {
   }
 
   showDrakeCalculator() {
-    // დრეიკის განტოლების კალკულატორის მოდალის ჩვენება
     const calculatorHTML = `
             <div class="drake-calculator">
                 <h3>Drake Equation Calculator</h3>
@@ -366,11 +369,11 @@ class AlienTheoriesExplorer {
   }
 }
 
-// გვერდის ინიციალიზაცია მხოლოდ მაშინ, თუ ეს არის aliens-theories გვერდი
+// Initialize aliens theories page
 document.addEventListener("DOMContentLoaded", function () {
   if (
-    window.spaceExplorer &&
-    window.spaceExplorer.currentPage === "aliens-theories"
+    window.location.pathname.includes("aliens-theories") ||
+    window.spaceExplorer?.currentPage === "aliens-theories"
   ) {
     initializeAliensTheoriesPage();
   }
@@ -378,12 +381,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
 let alienTheoriesExplorer;
 
-// გვერდის ინიციალიზაციის ფუნქცია
 function initializeAliensTheoriesPage() {
   alienTheoriesExplorer = new AlienTheoriesExplorer();
 }
 
-// გლობალური ფუნქციები
+// Global functions
 function revealTheory(card) {
   if (alienTheoriesExplorer) {
     alienTheoriesExplorer.revealTheory(card);
@@ -391,7 +393,6 @@ function revealTheory(card) {
 }
 
 function closeInfoModal() {
-  // ინფორმაციული მოდალის დახურვა
   const modal = document.getElementById("info-modal");
   if (modal) {
     modal.style.display = "none";
@@ -399,7 +400,6 @@ function closeInfoModal() {
 }
 
 function calculateDrake() {
-  // დრეიკის განტოლების კალკულაციის ფუნქცია
   if (!alienTheoriesExplorer) return;
 
   const params = {
@@ -435,7 +435,7 @@ function calculateDrake() {
   }
 }
 
-// უცხოპლანეტელების თეორიების ფაქტები
+// Alien theories facts
 const alienTheoriesFacts = [
   "The Drake Equation was formulated by Frank Drake in 1961",
   "The Fermi Paradox asks 'Where is everybody?' given the high probability of alien life",
@@ -448,13 +448,12 @@ const alienTheoriesFacts = [
 ];
 
 function getRandomAlienFact() {
-  // აბრუნებს შემთხვევით ფაქტს უცხოპლანეტელების თეორიებიდან
   return alienTheoriesFacts[
     Math.floor(Math.random() * alienTheoriesFacts.length)
   ];
 }
 
-// მოდალის დახურვა ეკრანის ცარიელ ადგილას დაკლიკებისას
+// Close modal when clicking outside
 window.addEventListener("click", function (event) {
   const modal = document.getElementById("info-modal");
   if (event.target === modal) {
@@ -462,7 +461,7 @@ window.addEventListener("click", function (event) {
   }
 });
 
-// გლობალური ფუნქციების ექსპორტი
+// Export functions for global use
 window.alienTheoriesExplorer = {
   revealTheory,
   closeInfoModal,
