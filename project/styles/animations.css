@@ -1,478 +1,488 @@
 /* Keyframe Animations */
 @keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(50px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @keyframes fadeInDown {
-    from {
-        opacity: 0;
-        transform: translateY(-50px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+  from {
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @keyframes fadeInLeft {
-    from {
-        opacity: 0;
-        transform: translateX(-50px);
-    }
-    to {
-        opacity: 1;
-        transform: translateX(0);
-    }
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
 @keyframes fadeInRight {
-    from {
-        opacity: 0;
-        transform: translateX(50px);
-    }
-    to {
-        opacity: 1;
-        transform: translateX(0);
-    }
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
 @keyframes float {
-    0%, 100% {
-        transform: translateY(0px);
-    }
-    50% {
-        transform: translateY(-20px);
-    }
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
 }
 
 @keyframes pulse {
-    0%, 100% {
-        transform: scale(1);
-    }
-    50% {
-        transform: scale(1.05);
-    }
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
 }
 
 @keyframes rotate {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
-    }
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 @keyframes twinkle {
-    0%, 100% {
-        opacity: 0.3;
-    }
-    50% {
-        opacity: 1;
-    }
+  0%,
+  100% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 1;
+  }
 }
 
 @keyframes shooting-star {
-    0% {
-        transform: translateX(-100px) translateY(100px);
-        opacity: 0;
-    }
-    50% {
-        opacity: 1;
-    }
-    100% {
-        transform: translateX(100vw) translateY(-100px);
-        opacity: 0;
-    }
+  0% {
+    transform: translateX(-100px) translateY(100px);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(100vw) translateY(-100px);
+    opacity: 0;
+  }
 }
 
 @keyframes glow {
-    0%, 100% {
-        box-shadow: 0 0 20px var(--space-blue);
-    }
-    50% {
-        box-shadow: 0 0 30px var(--space-blue), 0 0 40px var(--space-blue);
-    }
+  0%,
+  100% {
+    box-shadow: 0 0 20px var(--space-blue);
+  }
+  50% {
+    box-shadow: 0 0 30px var(--space-blue), 0 0 40px var(--space-blue);
+  }
 }
 
 @keyframes rocket-launch {
-    0% {
-        transform: translateY(0) rotate(0deg);
-    }
-    100% {
-        transform: translateY(-100vh) rotate(10deg);
-    }
+  0% {
+    transform: translateY(0) rotate(0deg);
+  }
+  100% {
+    transform: translateY(-100vh) rotate(10deg);
+  }
 }
 
 @keyframes rocket-flame {
-    0%, 100% {
-        transform: scaleY(1);
-    }
-    50% {
-        transform: scaleY(1.5);
-    }
+  0%,
+  100% {
+    transform: scaleY(1);
+  }
+  50% {
+    transform: scaleY(1.5);
+  }
 }
 
 @keyframes orbital-rotation {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
-    }
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 @keyframes planet-spin {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
-    }
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 @keyframes nebula-flow {
-    0%, 100% {
-        transform: translateX(0) translateY(0);
-    }
-    33% {
-        transform: translateX(20px) translateY(-10px);
-    }
-    66% {
-        transform: translateX(-10px) translateY(20px);
-    }
+  0%,
+  100% {
+    transform: translateX(0) translateY(0);
+  }
+  33% {
+    transform: translateX(20px) translateY(-10px);
+  }
+  66% {
+    transform: translateX(-10px) translateY(20px);
+  }
 }
 
 @keyframes black-hole-spin {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
-    }
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 @keyframes accretion-disk {
-    0% {
-        transform: rotate(0deg) scale(1);
-    }
-    50% {
-        transform: rotate(180deg) scale(1.1);
-    }
-    100% {
-        transform: rotate(360deg) scale(1);
-    }
+  0% {
+    transform: rotate(0deg) scale(1);
+  }
+  50% {
+    transform: rotate(180deg) scale(1.1);
+  }
+  100% {
+    transform: rotate(360deg) scale(1);
+  }
 }
 
 @keyframes ufo-hover {
-    0%, 100% {
-        transform: translateY(0px);
-    }
-    50% {
-        transform: translateY(-15px);
-    }
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-15px);
+  }
 }
 
 @keyframes ufo-lights {
-    0%, 100% {
-        opacity: 0.3;
-    }
-    25% {
-        opacity: 1;
-    }
-    50% {
-        opacity: 0.3;
-    }
-    75% {
-        opacity: 1;
-    }
+  0%,
+  100% {
+    opacity: 0.3;
+  }
+  25% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.3;
+  }
+  75% {
+    opacity: 1;
+  }
 }
 
 @keyframes beam-pulse {
-    0%, 100% {
-        opacity: 0.3;
-        transform: scaleX(1);
-    }
-    50% {
-        opacity: 0.8;
-        transform: scaleX(1.2);
-    }
+  0%,
+  100% {
+    opacity: 0.3;
+    transform: scaleX(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scaleX(1.2);
+  }
 }
 
 @keyframes astronaut-float {
-    0%, 100% {
-        transform: translateY(0px) rotate(0deg);
-    }
-    25% {
-        transform: translateY(-10px) rotate(5deg);
-    }
-    50% {
-        transform: translateY(0px) rotate(0deg);
-    }
-    75% {
-        transform: translateY(10px) rotate(-5deg);
-    }
+  0%,
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  25% {
+    transform: translateY(-10px) rotate(5deg);
+  }
+  50% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  75% {
+    transform: translateY(10px) rotate(-5deg);
+  }
 }
 
 @keyframes galaxy-spiral {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
-    }
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 @keyframes star-trail {
-    0% {
-        opacity: 0;
-        transform: translateX(-50px);
-    }
-    50% {
-        opacity: 1;
-    }
-    100% {
-        opacity: 0;
-        transform: translateX(50px);
-    }
+  0% {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(50px);
+  }
 }
 
 @keyframes meteor-shower {
-    0% {
-        transform: translateX(-100px) translateY(100px);
-        opacity: 0;
-    }
-    10% {
-        opacity: 1;
-    }
-    90% {
-        opacity: 1;
-    }
-    100% {
-        transform: translateX(100vw) translateY(-100px);
-        opacity: 0;
-    }
+  0% {
+    transform: translateX(-100px) translateY(100px);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(100vw) translateY(-100px);
+    opacity: 0;
+  }
 }
 
 @keyframes timeline-reveal {
-    from {
-        opacity: 0;
-        transform: translateX(-50px);
-    }
-    to {
-        opacity: 1;
-        transform: translateX(0);
-    }
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
 @keyframes card-flip {
-    0% {
-        transform: rotateY(0deg);
-    }
-    50% {
-        transform: rotateY(90deg);
-    }
-    100% {
-        transform: rotateY(0deg);
-    }
+  0% {
+    transform: rotateY(0deg);
+  }
+  50% {
+    transform: rotateY(90deg);
+  }
+  100% {
+    transform: rotateY(0deg);
+  }
 }
 
 @keyframes zoom-in {
-    from {
-        transform: scale(0.8);
-        opacity: 0;
-    }
-    to {
-        transform: scale(1);
-        opacity: 1;
-    }
+  from {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
 }
 
 @keyframes zoom-out {
-    from {
-        transform: scale(1.2);
-        opacity: 0;
-    }
-    to {
-        transform: scale(1);
-        opacity: 1;
-    }
+  from {
+    transform: scale(1.2);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
 }
 
 @keyframes slide-in-left {
-    from {
-        transform: translateX(-100%);
-        opacity: 0;
-    }
-    to {
-        transform: translateX(0);
-        opacity: 1;
-    }
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
 }
 
 @keyframes slide-in-right {
-    from {
-        transform: translateX(100%);
-        opacity: 0;
-    }
-    to {
-        transform: translateX(0);
-        opacity: 1;
-    }
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
 }
 
 @keyframes bounce-in {
-    0% {
-        transform: scale(0.3);
-        opacity: 0;
-    }
-    50% {
-        transform: scale(1.05);
-    }
-    70% {
-        transform: scale(0.9);
-    }
-    100% {
-        transform: scale(1);
-        opacity: 1;
-    }
+  0% {
+    transform: scale(0.3);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  70% {
+    transform: scale(0.9);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
 }
 
 /* Animation Classes */
 .fade-in-up {
-    animation: fadeInUp 0.8s ease-out;
+  animation: fadeInUp 0.8s ease-out;
 }
 
 .fade-in-down {
-    animation: fadeInDown 0.8s ease-out;
+  animation: fadeInDown 0.8s ease-out;
 }
 
 .fade-in-left {
-    animation: fadeInLeft 0.8s ease-out;
+  animation: fadeInLeft 0.8s ease-out;
 }
 
 .fade-in-right {
-    animation: fadeInRight 0.8s ease-out;
+  animation: fadeInRight 0.8s ease-out;
 }
 
 .float {
-    animation: float 3s ease-in-out infinite;
+  animation: float 3s ease-in-out infinite;
 }
 
 .pulse {
-    animation: pulse 2s ease-in-out infinite;
+  animation: pulse 2s ease-in-out infinite;
 }
 
 .rotate {
-    animation: rotate 10s linear infinite;
+  animation: rotate 10s linear infinite;
 }
 
 .twinkle {
-    animation: twinkle 2s ease-in-out infinite;
+  animation: twinkle 2s ease-in-out infinite;
 }
 
 .glow {
-    animation: glow 2s ease-in-out infinite;
+  animation: glow 2s ease-in-out infinite;
 }
 
 .bounce-in {
-    animation: bounce-in 0.6s ease-out;
+  animation: bounce-in 0.6s ease-out;
 }
 
 .zoom-in {
-    animation: zoom-in 0.5s ease-out;
+  animation: zoom-in 0.5s ease-out;
 }
 
 .zoom-out {
-    animation: zoom-out 0.5s ease-out;
+  animation: zoom-out 0.5s ease-out;
 }
 
 /* Hover Effects */
 .hover-lift {
-    transition: transform 0.3s ease;
+  transition: transform 0.3s ease;
 }
 
 .hover-lift:hover {
-    transform: translateY(-10px);
+  transform: translateY(-10px);
 }
 
 .hover-glow {
-    transition: box-shadow 0.3s ease;
+  transition: box-shadow 0.3s ease;
 }
 
 .hover-glow:hover {
-    box-shadow: 0 0 30px var(--space-blue);
+  box-shadow: 0 0 30px var(--space-blue);
 }
 
 .hover-scale {
-    transition: transform 0.3s ease;
+  transition: transform 0.3s ease;
 }
 
 .hover-scale:hover {
-    transform: scale(1.05);
+  transform: scale(1.05);
 }
 
 .hover-rotate {
-    transition: transform 0.3s ease;
+  transition: transform 0.3s ease;
 }
 
 .hover-rotate:hover {
-    transform: rotate(5deg);
+  transform: rotate(5deg);
 }
 
 /* Scroll Animations */
 .scroll-reveal {
-    opacity: 0;
-    transform: translateY(50px);
-    transition: all 0.8s ease;
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 0.8s ease;
 }
 
 .scroll-reveal.active {
-    opacity: 1;
-    transform: translateY(0);
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .scroll-reveal-left {
-    opacity: 0;
-    transform: translateX(-50px);
-    transition: all 0.8s ease;
+  opacity: 0;
+  transform: translateX(-50px);
+  transition: all 0.8s ease;
 }
 
 .scroll-reveal-left.active {
-    opacity: 1;
-    transform: translateX(0);
+  opacity: 1;
+  transform: translateX(0);
 }
 
 .scroll-reveal-right {
-    opacity: 0;
-    transform: translateX(50px);
-    transition: all 0.8s ease;
+  opacity: 0;
+  transform: translateX(50px);
+  transition: all 0.8s ease;
 }
 
 .scroll-reveal-right.active {
-    opacity: 1;
-    transform: translateX(0);
+  opacity: 1;
+  transform: translateX(0);
 }
 
 /* Parallax Effects */
 .parallax {
-    transform: translateZ(0);
-    transition: transform 0.1s ease-out;
+  transform: translateZ(0);
+  transition: transform 0.1s ease-out;
 }
 
 .parallax-slow {
-    transform: translateZ(0);
-    transition: transform 0.2s ease-out;
+  transform: translateZ(0);
+  transition: transform 0.2s ease-out;
 }
 
 .parallax-fast {
-    transform: translateZ(0);
-    transition: transform 0.05s ease-out;
+  transform: translateZ(0);
+  transition: transform 0.05s ease-out;
 }
