@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Planets - Space Explorer</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/animations.css">
+    <link rel="stylesheet" href="styles/planets.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Exo+2:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="starfield"></div>
+    <div id="audio-toggle" class="audio-control">
+        <span id="audio-icon">🔇</span>
+    </div>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <span class="logo-text">SPACE EXPLORER</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="planets.html" class="nav-link active">Planets</a></li>
+                <li><a href="black-holes.html" class="nav-link">Black Holes</a></li>
+                <li><a href="galaxies.html" class="nav-link">Galaxies</a></li>
+                <li><a href="space-history.html" class="nav-link">History</a></li>
+                <li><a href="aliens-theories.html" class="nav-link">Aliens & Theories</a></li>
+                <li><a href="quiz.html" class="nav-link">Quiz</a></li>
+                <li><a href="about.html" class="nav-link">About</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <section class="page-header">
+            <div class="container">
+                <h1 class="page-title">Solar System</h1>
+                <p class="page-subtitle">Explore our planetary neighbors in their cosmic dance</p>
+            </div>
+        </section>
+
+        <section class="solar-system-section">
+            <div class="solar-system-container">
+                <div class="sun" onclick="showPlanetInfo('sun')">
+                    <div class="sun-core"></div>
+                    <div class="sun-corona"></div>
+                </div>
+                
+                <div class="orbit orbit-1">
+                    <div class="planet mercury" onclick="showPlanetInfo('mercury')"></div>
+                </div>
+                
+                <div class="orbit orbit-2">
+                    <div class="planet venus" onclick="showPlanetInfo('venus')"></div>
+                </div>
+                
+                <div class="orbit orbit-3">
+                    <div class="planet earth" onclick="showPlanetInfo('earth')">
+                        <div class="moon"></div>
+                    </div>
+                </div>
+                
+                <div class="orbit orbit-4">
+                    <div class="planet mars" onclick="showPlanetInfo('mars')"></div>
+                </div>
+                
+                <div class="orbit orbit-5">
+                    <div class="planet jupiter" onclick="showPlanetInfo('jupiter')"></div>
+                </div>
+                
+                <div class="orbit orbit-6">
+                    <div class="planet saturn" onclick="showPlanetInfo('saturn')">
+                        <div class="saturn-rings"></div>
+                    </div>
+                </div>
+                
+                <div class="orbit orbit-7">
+                    <div class="planet uranus" onclick="showPlanetInfo('uranus')"></div>
+                </div>
+                
+                <div class="orbit orbit-8">
+                    <div class="planet neptune" onclick="showPlanetInfo('neptune')"></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="controls-section">
+            <div class="container">
+                <div class="controls">
+                    <button class="btn btn-primary" onclick="toggleAnimation()">
+                        <span id="animation-status">Pause</span> Animation
+                    </button>
+                    <button class="btn btn-secondary" onclick="resetView()">Reset View</button>
+                    <button class="btn btn-tertiary" onclick="zoomIn()">Zoom In</button>
+                    <button class="btn btn-tertiary" onclick="zoomOut()">Zoom Out</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Planet Info Modal -->
+    <div id="planet-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closePlanetModal()">&times;</span>
+            <h2 id="planet-name"></h2>
+            <div id="planet-details"></div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Space Explorer. Journey through the cosmos.</p>
+        </div>
+    </footer>
+
+    <script src="scripts/main.js"></script>
+    <script src="scripts/starfield.js"></script>
+    <script src="scripts/planets.js"></script>
+</body>
+</html>

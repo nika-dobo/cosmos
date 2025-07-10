@@ -1,0 +1,387 @@
+.quiz-selection {
+  padding: 5rem 0;
+}
+
+.quiz-options {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.quiz-option {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 15px;
+  padding: 2rem;
+  text-align: center;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.quiz-option:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(0, 191, 255, 0.3);
+}
+
+.option-icon {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+  filter: drop-shadow(0 0 10px currentColor);
+}
+
+.quiz-option h3 {
+  font-family: var(--font-primary);
+  color: var(--space-blue);
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+}
+
+.quiz-option p {
+  color: var(--space-light-gray);
+  line-height: 1.6;
+}
+
+.quiz-container {
+  padding: 5rem 0;
+  min-height: 80vh;
+}
+
+.quiz-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.quiz-header h2 {
+  font-family: var(--font-primary);
+  color: var(--space-blue);
+  margin-bottom: 2rem;
+  font-size: 2rem;
+}
+
+.quiz-progress {
+  width: 100%;
+  max-width: 600px;
+  height: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  margin: 0 auto 1rem;
+  overflow: hidden;
+}
+
+.progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, var(--space-blue), var(--space-purple));
+  border-radius: 4px;
+  transition: width 0.3s ease;
+  box-shadow: 0 0 10px var(--space-blue);
+}
+
+.quiz-info {
+  display: flex;
+  justify-content: space-between;
+  max-width: 600px;
+  margin: 0 auto;
+  color: var(--space-light-gray);
+}
+
+.quiz-content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+#question-container {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 15px;
+  padding: 3rem;
+  margin-bottom: 2rem;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+#question-text {
+  font-family: var(--font-primary);
+  font-size: 1.5rem;
+  color: var(--space-blue);
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.answers-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1rem;
+}
+
+.answer-option {
+  background: rgba(255, 255, 255, 0.05);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  padding: 1.5rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-align: center;
+  position: relative;
+}
+
+.answer-option:hover {
+  border-color: var(--space-blue);
+  box-shadow: 0 0 20px rgba(0, 191, 255, 0.3);
+  transform: translateY(-2px);
+}
+
+.answer-option.selected {
+  border-color: var(--space-blue);
+  background: rgba(0, 191, 255, 0.1);
+  box-shadow: 0 0 20px rgba(0, 191, 255, 0.3);
+}
+
+.answer-option.correct {
+  border-color: var(--space-green);
+  background: rgba(0, 255, 127, 0.1);
+  box-shadow: 0 0 20px rgba(0, 255, 127, 0.3);
+}
+
+.answer-option.incorrect {
+  border-color: var(--space-orange);
+  background: rgba(255, 107, 53, 0.1);
+  box-shadow: 0 0 20px rgba(255, 107, 53, 0.3);
+}
+
+.answer-option.disabled {
+  pointer-events: none;
+  opacity: 0.6;
+}
+
+.quiz-controls {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.game-container {
+  padding: 5rem 0;
+  min-height: 80vh;
+}
+
+.game-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.game-header h2 {
+  font-family: var(--font-primary);
+  color: var(--space-blue);
+  margin-bottom: 1rem;
+  font-size: 2rem;
+}
+
+.game-stats {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  color: var(--space-light-gray);
+}
+
+.game-arena {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+#gameCanvas {
+  border: 2px solid var(--space-blue);
+  border-radius: 15px;
+  background: radial-gradient(circle, #000000, #1a1a1a);
+  box-shadow: 0 0 30px rgba(0, 191, 255, 0.3);
+  max-width: 100%;
+  height: auto;
+}
+
+.game-controls {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.game-instructions {
+  max-width: 600px;
+  margin: 2rem auto 0;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 15px;
+  padding: 2rem;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.game-instructions h3 {
+  font-family: var(--font-primary);
+  color: var(--space-blue);
+  margin-bottom: 1rem;
+}
+
+.game-instructions p {
+  color: var(--space-light-gray);
+  line-height: 1.6;
+}
+
+.results-container {
+  padding: 5rem 0;
+  text-align: center;
+}
+
+.results-content {
+  max-width: 600px;
+  margin: 0 auto;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 15px;
+  padding: 3rem;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.results-content h2 {
+  font-family: var(--font-primary);
+  color: var(--space-blue);
+  margin-bottom: 2rem;
+  font-size: 2rem;
+}
+
+.results-details {
+  margin-bottom: 2rem;
+}
+
+.results-details h3 {
+  font-family: var(--font-primary);
+  color: var(--space-green);
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+}
+
+.results-details p {
+  color: var(--space-light-gray);
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+.results-actions {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.score-display {
+  font-family: var(--font-primary);
+  font-size: 2rem;
+  color: var(--space-blue);
+  margin-bottom: 1rem;
+}
+
+.personality-result {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 15px;
+  padding: 2rem;
+  margin-bottom: 2rem;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.planet-visual {
+  width: 100px;
+  height: 100px;
+  margin: 0 auto 1rem;
+  border-radius: 50%;
+  animation: planet-spin 20s linear infinite;
+}
+
+.planet-mercury {
+  background: radial-gradient(circle, #8c7853, #654321);
+}
+
+.planet-venus {
+  background: radial-gradient(circle, #ffc649, #ff8c00);
+}
+
+.planet-earth {
+  background: radial-gradient(circle, #6b93d6, #4d7c0f);
+}
+
+.planet-mars {
+  background: radial-gradient(circle, #cd5c5c, #8b0000);
+}
+
+.planet-jupiter {
+  background: radial-gradient(circle, #d8ca9d, #fad5a5);
+}
+
+.planet-saturn {
+  background: radial-gradient(circle, #fab27b, #ffd700);
+}
+
+.planet-uranus {
+  background: radial-gradient(circle, #4fd0e7, #00bfff);
+}
+
+.planet-neptune {
+  background: radial-gradient(circle, #4b70dd, #0000ff);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .quiz-options {
+    grid-template-columns: 1fr;
+  }
+
+  .answers-container {
+    grid-template-columns: 1fr;
+  }
+
+  .quiz-info {
+    flex-direction: column;
+    gap: 0.5rem;
+    text-align: center;
+  }
+
+  #gameCanvas {
+    width: 100%;
+    height: 400px;
+  }
+
+  .game-stats {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .results-content {
+    padding: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  #question-container {
+    padding: 2rem;
+  }
+
+  #question-text {
+    font-size: 1.2rem;
+  }
+
+  .answer-option {
+    padding: 1rem;
+  }
+
+  #gameCanvas {
+    height: 300px;
+  }
+
+  .game-instructions {
+    padding: 1.5rem;
+  }
+}

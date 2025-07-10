@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Space Explorer - Journey Through the Cosmos</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/animations.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Exo+2:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="starfield"></div>
+    <div id="audio-toggle" class="audio-control">
+        <span id="audio-icon">🔊</span>
+    </div>
+    <audio id="background-music" loop>
+        <source src="https://www.soundjay.com/misc/sounds/space-ambient.mp3" type="audio/mpeg">
+        <source src="https://www.zapsplat.com/wp-content/uploads/2015/sound-effects-one/zapsplat_science_fiction_space_ambience_deep_space_drone_001_24700.mp3" type="audio/mpeg">
+    </audio>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <span class="logo-text">SPACE EXPLORER</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link active">Home</a></li>
+                <li><a href="planets.html" class="nav-link">Planets</a></li>
+                <li><a href="black-holes.html" class="nav-link">Black Holes</a></li>
+                <li><a href="galaxies.html" class="nav-link">Galaxies</a></li>
+                <li><a href="space-history.html" class="nav-link">History</a></li>
+                <li><a href="aliens-theories.html" class="nav-link">Aliens & Theories</a></li>
+                <li><a href="quiz.html" class="nav-link">Quiz</a></li>
+                <li><a href="about.html" class="nav-link">About</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <section class="hero-section">
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    <span class="title-line">Journey Through</span>
+                    <span class="title-line">The Cosmos</span>
+                </h1>
+                <p class="hero-subtitle">Explore the infinite wonders of space, from distant galaxies to mysterious black holes</p>
+                <div class="hero-buttons">
+                    <button class="btn btn-primary" onclick="startExploration()">Begin Exploration</button>
+                    <button class="btn btn-secondary" onclick="scrollToSection('mission')">Our Mission</button>
+                </div>
+            </div>
+            <div class="rocket-container">
+                <div class="rocket" id="rocket">
+                    <div class="rocket-body"></div>
+                    <div class="rocket-flame"></div>
+                </div>
+                <div class="rocket-trail"></div>
+            </div>
+        </section>
+
+        <section id="mission" class="mission-section">
+            <div class="container">
+                <h2 class="section-title">Our Mission</h2>
+                <div class="mission-grid">
+                    <div class="mission-card">
+                        <div class="card-icon">🚀</div>
+                        <h3>Explore</h3>
+                        <p>Discover the mysteries of space through interactive experiences and stunning visuals</p>
+                    </div>
+                    <div class="mission-card">
+                        <div class="card-icon">🔬</div>
+                        <h3>Learn</h3>
+                        <p>Understand the science behind cosmic phenomena and space exploration</p>
+                    </div>
+                    <div class="mission-card">
+                        <div class="card-icon">🌌</div>
+                        <h3>Wonder</h3>
+                        <p>Experience the awe-inspiring beauty of the universe through immersive animations</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="featured-section">
+            <div class="container">
+                <h2 class="section-title">Featured Destinations</h2>
+                <div class="featured-grid">
+                    <div class="featured-card" onclick="window.location.href='planets.html'">
+                        <div class="card-bg planets-bg"></div>
+                        <div class="card-content">
+                            <h3>Solar System</h3>
+                            <p>Explore our planetary neighbors with interactive 3D models</p>
+                        </div>
+                    </div>
+                    <div class="featured-card" onclick="window.location.href='black-holes.html'">
+                        <div class="card-bg blackhole-bg"></div>
+                        <div class="card-content">
+                            <h3>Black Holes</h3>
+                            <p>Witness the gravitational giants that bend space and time</p>
+                        </div>
+                    </div>
+                    <div class="featured-card" onclick="window.location.href='galaxies.html'">
+                        <div class="card-bg galaxies-bg"></div>
+                        <div class="card-content">
+                            <h3>Galaxies</h3>
+                            <p>Journey through star-forming regions and cosmic structures</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Space Explorer. Journey through the cosmos.</p>
+        </div>
+    </footer>
+
+    <script src="scripts/main.js"></script>
+    <script src="scripts/starfield.js"></script>
+    <script src="scripts/animations.js"></script>
+</body>
+</html>
